@@ -1,0 +1,95 @@
+.listsongs-container {
+    display: block;
+
+}
+
+.row {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 20px;
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+}
+
+.row::-webkit-scrollbar {
+    display: none;
+}
+
+.card {
+    background-color: #303030;
+    border-radius: 4px;
+    box-shadow: 0px 4px 19px rgba(0, 0, 0, 0.35);
+    width: 224px;
+    /* height: 180px; */
+}
+
+.cardImg {
+
+    max-width: 140px;
+    max-height: 160px;
+    object-fit: cover;
+    padding: 10px 10px 0;
+}
+
+.card>h3 {
+
+    font-family: 'DM Sans' ;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 0.9em;
+    line-height: 15px;
+    letter-spacing: 0.03em;
+    /* color: hsl(0, 0%, 100%); */
+    color: #C4C4C4;
+    text-align: center;
+    padding: 0px 10px 0px;
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+
+
+    width: auto;
+    text-align: center;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+
+
+}
+
+
+
+
+.card>p {
+
+    font-family: 'DM Sans';
+    font-style: normal;
+    font-weight: 450;
+    font-size: 0.7rem;
+    line-height: 15px;
+    color: #B3B3B3;
+    padding: 0px 10px 0px;
+
+
+    text-align: center;
+    /* Inside auto layout */
+
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+}

@@ -1,0 +1,82 @@
+.section {
+   /* Take the remaining width */
+   flex: 1;
+
+   /* Make it scrollable */
+   overflow: auto;
+   /* background-color: #0E0E0E; */
+
+   color: #FFFFFF;
+}
+
+.midnight {
+   background: linear-gradient(180deg, #3333A3 5.09%, #121212 33.4%);
+}
+
+.dawn {
+   background: linear-gradient(180deg, #DEF628 5.09%, #121212 43.28%);
+}
+
+.morning {
+   background-color: #0E0E0E;
+}
+
+.noon {
+   background: linear-gradient(180deg, #A34284 5.09%, #121212 43.28%);
+
+}
+
+.eveing {
+   background: linear-gradient(180deg, #6EA6EA 5.09%, #121212 43.28%);
+
+}
+
+.night {
+   background: linear-gradient(180deg, #604EC1 5.09%, #121212 43.28%);
+
+}
+
+.home-components {
+   margin: 5rem 1rem 1rem;
+}
+
+.userWish {
+   font-family: 'DM Sans';
+   font-style: normal;
+   font-weight: 700;
+   font-size: 38px;
+   line-height: 30px;
+   letter-spacing: -0.03em;
+   color: #FFFFFF;
+}
+
+.gap {
+   width: 100%;
+   height: 88px;
+   /* background-color: #0E0E0E; */
+   background-color: #121212 43.28%;
+}
+
+/* width */
+::-webkit-scrollbar {
+   width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+   background: #0E0E0E;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+   background: #555;
+}
+
+
+
+@media only screen and (max-width: 600px) {
+   .userWish {
+      line-height: 10px;
+      font-size: 20px;
+   }
+}

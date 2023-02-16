@@ -1,0 +1,205 @@
+.multipage-component {
+    margin: 5rem 1rem 1rem;
+}
+
+/* history page */
+
+.historyBanner {
+    display: flex;
+    flex-direction: row;
+    background-color: #fff16a;
+    border-radius: 3px;
+}
+
+.history-banner-fileds {
+    display: flex;
+    flex-direction: column;
+    margin-left: 1.5rem;
+}
+
+.history-banner-fileds h2 {
+    font-family: 'DM Sans';
+    font-style: normal;
+    font-weight: 900;
+    font-size: 5rem;
+    line-height: 0px;
+    display: flex;
+    align-items: center;
+    letter-spacing: -0.06em;
+
+    color: #1b170b;
+}
+
+.history-banner-fileds h5 {
+
+    color: #1b170b;
+}
+
+/* liked page */
+
+.likedBanner {
+    display: flex;
+    flex-direction: row;
+    background-color: #6b5fcd;
+    border-radius: 3px;
+}
+
+
+.liked-banner-fileds {
+    display: flex;
+    flex-direction: column;
+    margin-left: 1.5rem;
+}
+
+.liked-banner-fileds h2 {
+    font-family: 'DM Sans';
+    font-style: normal;
+    font-weight: 900;
+    font-size: 5rem;
+    line-height: 0px;
+    display: flex;
+    align-items: center;
+    letter-spacing: -0.06em;
+
+    color: #FFFFFF;
+}
+
+.liked-banner-fileds h5 {
+
+    color: #FFFFFF;
+}
+
+/* album page */
+
+.albumBanner{
+    display: flex;
+    flex-direction: row;
+}
+
+.album-banner-fileds {
+    display: flex;
+    flex-direction: column;
+    margin-left: 1.5rem;
+}
+
+.album-banner-fileds h2 {
+    font-family: 'DM Sans';
+    font-style: normal;
+    font-weight: 900;
+    font-size: 5rem;
+    line-height: 0px;
+    display: flex;
+    align-items: center;
+    letter-spacing: -0.06em;
+
+    color: #FFFFFF;
+}
+
+.album-banner-fileds h5 {
+
+    color: #FFFFFF;
+}
+
+/* artist page */
+
+
+.artistBanner{
+    display: flex;
+    flex-direction: row;
+}
+
+.artist-banner-fileds {
+    display: flex;
+    flex-direction: column;
+    margin-left: 1.5rem;
+}
+
+.artist-banner-fileds h2 {
+    font-family: 'DM Sans';
+    font-style: normal;
+    font-weight: 900;
+    font-size: 5rem;
+    line-height: 0px;
+    display: flex;
+    align-items: center;
+    letter-spacing: -0.06em;
+
+    color: #FFFFFF;
+}
+
+.artist-banner-fileds h5 {
+
+    color: #FFFFFF;
+}
+
+/* Comman styles */
+
+.banner-img {
+    max-width: 197px;
+    border-radius: 3px;
+}
+
+
+
+
+@media only screen and (max-width: 900px) {
+
+    .history-banner-fileds h2 {
+        font-size: 3rem;
+    }
+
+    .liked-banner-fileds h2 {
+        font-size: 3rem;
+    }
+    .album-banner-fileds h2 {
+        font-size: 3rem;
+    }
+    .artist-banner-fileds h2 {
+        font-size: 3rem;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .banner-img {
+        max-width: 150px;
+        max-height: 150px;
+    }
+
+    .history-banner-fileds h5 {
+        margin-top: 3rem;
+        font-size: 10px;
+        line-height: 12px;
+    }
+
+    .history-banner-fileds h2 {
+        font-size: 1.5rem;
+    }
+
+    .liked-banner-fileds h5 {
+        margin-top: 3rem;
+        font-size: 10px;
+        line-height: 12px;
+    }
+
+    .liked-banner-fileds h2 {
+        font-size: 1.5rem;
+    }
+    .album-banner-fileds h5 {
+        margin-top: 3rem;
+        font-size: 10px;
+        line-height: 12px;
+    }
+
+    .album-banner-fileds h2 {
+        font-size: 1.5rem;
+    }
+    .artist-banner-fileds h5 {
+        margin-top: 3rem;
+        font-size: 10px;
+        line-height: 12px;
+    }
+
+    .artist-banner-fileds h2 {
+        font-size: 1.5rem;
+    }
+}

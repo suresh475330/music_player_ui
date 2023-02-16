@@ -1,0 +1,23 @@
+.sideBar {
+    display: none;
+    width: 25%;
+    background-color:#000000;
+    color: #FFF;
+}
+.toggleSideBar{
+    width: 60%;
+    height: 100vh;
+    background-color:#000000;
+    color: #FFF;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    z-index: 1;
+}
+
+
+@media only screen and (min-width: 600px) {
+    .sideBar{
+        display: block;
+    }
+}

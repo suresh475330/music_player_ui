@@ -1,0 +1,68 @@
+.admin-component {
+    margin: 5rem 1rem 1rem;
+}
+
+.welcome-msg {
+    font-family: 'DM Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 38px;
+    line-height: 30px;
+    letter-spacing: -0.03em;
+    color: #FFFFFF;
+    text-align: center;
+}
+
+.admin-card {
+    width: 200px;
+    height: 200px;
+    border-radius: 10px;
+}
+
+.admin-card-title {
+    font-family: 'DM Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 25px;
+    line-height: 30px;
+    /* identical to box height */
+
+    letter-spacing: -0.04em;
+    color: #FFFFFF;
+
+    margin-left: 1rem;
+    padding-top: 1.5rem;
+
+
+}
+
+.user {
+    background-color: #27856A;
+}
+
+.artist {
+    background-color: #1E3264;
+}
+
+.album {
+    background-color: #8D67AB;
+}
+
+.song {
+    background-color: #E8115B;
+}
+
+@media only screen and (max-width: 600px) {
+    .welcome-msg {
+        line-height: 10px;
+        font-size: 20px;
+    }
+
+    .admin-card {
+        width: 150px;
+        height: 150px;
+    }
+    .admin-card-title{
+        font-size: 17px;
+    }
+}

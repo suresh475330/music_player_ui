@@ -1,0 +1,106 @@
+.library-component {
+    margin: 5rem 1rem 1rem;
+}
+
+.row-tabs {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 30px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.row-tabs::-webkit-scrollbar {
+    display: none;
+}
+
+.liked {
+
+    width: 478px;
+    height: 270px;
+    background: linear-gradient(134.97deg, #3822EA 3.13%, #A3A6E5 100%);
+    border-radius: 10px;
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+.history {
+    width: 478px;
+    height: 270px;
+
+    border-radius: 10px;
+
+    /* Inside auto layout */
+    background: #BA5D07;
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+}
+
+.liked-head {
+
+    font-family: 'DM Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 21px;
+    /* identical to box height */
+    margin-left: 1rem;
+    letter-spacing: -0.03em;
+
+    color: #FFFFFF;
+}
+
+.liked-tail {
+    font-family: 'DM Sans';
+    font-style: normal;
+    font-weight: 450;
+    font-size: 22px;
+    line-height: 28px;
+    /* identical to box height */
+    margin-left: 1rem;
+    letter-spacing: -0.02em;
+    color: #FFFFFF;
+}
+
+.history-head {
+    font-family: 'DM Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 21px;
+    /* identical to box height */
+    margin-left: 1rem;
+    letter-spacing: -0.03em;
+
+    color: #FFFFFF;
+}
+
+.history-tail {
+    font-family: 'DM Sans';
+    font-style: normal;
+    font-weight: 450;
+    font-size: 22px;
+    line-height: 28px;
+    /* identical to box height */
+    margin-left: 1rem;
+    letter-spacing: -0.02em;
+    color: #FFFFFF;
+}
+
+@media only screen and (max-width: 600px) {
+    .liked {
+        width: 278px;
+        height: 170px;
+    }
+
+    .history {
+        width: 278px;
+        height: 170px;
+    }
+}
