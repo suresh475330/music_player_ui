@@ -76,7 +76,7 @@ const Home = () => {
                         <AlbumsList />
 
                         {/* This for artist list  */}
-                        <ArtistsList rowTitle={'Made for you'} />
+                        <ArtistsList  />
 
 
                     </div>

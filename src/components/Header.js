@@ -12,6 +12,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import { logOut } from '../features/authSlice';
 import { setSideBarOpen } from '../features/designSlice';
 
+import avatarImg from '../assets/historySong.jpeg';
+
 export default function Header() {
 
     const { user } = useSelector((state) => state.auth);
@@ -55,7 +57,7 @@ export default function Header() {
                             onClick={handleClick}
                         >
                             <IconButton sx={{ p: 0 }}>
-                                <Avatar alt={user.name} sx={{ bgcolor: "#000000" }} src={`img`} />
+                                <Avatar alt={user.name} sx={{ bgcolor: "#000000" }} src={avatarImg} />
                             </IconButton>
                         </Tooltip>
                     )}
@@ -69,7 +71,6 @@ export default function Header() {
                         MenuListProps={{
                             'aria-labelledby': 'basic-button',
                         }} >
-                        <MenuItem onClick={handleClose}>Profile</MenuItem>
                         <MenuItem onClick={logOutDispatch}>Logout</MenuItem>
                     </Menu>
                 </Toolbar>

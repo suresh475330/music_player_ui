@@ -1,13 +1,12 @@
 import "../components/SongForm.css";
 import { useState } from "react";
-import axios from 'axios';
 import FileInput from "../components/FileInput";
 
 export default function UploadArtist() {
 
     const [data, setData] = useState({
         name : "",
-        img: ""
+        imageUrl: ""
     });
 
     const handleChange = ({ currentTarget: input }) => {
@@ -56,7 +55,7 @@ export default function UploadArtist() {
                         label="Choose Image"
                         handleInputState={handleInputState}
                         type="image"
-                        value={data.img}
+                        value={data.imageUrl}
 
                     />
 

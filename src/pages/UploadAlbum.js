@@ -1,13 +1,12 @@
 import "../components/SongForm.css";
 import { useState } from "react";
-import axios from 'axios';
 import FileInput from "../components/FileInput";
 
 export default function UploadAlbum() {
 
     const [data, setData] = useState({
-        name : "",
-        img: ""
+        title : "",
+        imageUrl: ""
     });
 
     const handleChange = ({ currentTarget: input }) => {
@@ -23,6 +22,11 @@ export default function UploadAlbum() {
         try {
             // const url = process.env.REACT_APP_API_URL + "/songs"
             // const { data: res } = await axios.post(url, data);
+
+            if (data.img === '') {
+                return alert("Plz choose image");
+            }
+
             console.log(data)
         } catch (error) {
             console.log(error)
@@ -37,23 +41,24 @@ export default function UploadAlbum() {
                     <input
                         type="text"
                         className="songForm-input"
-                        placeholder="Album Name"
-                        name="name"
+                        placeholder="Album Title"
+                        name="title"
                         onChange={handleChange}
-                        value={data.name}
+                        value={data.title}
                         required
                     />
 
 
                     <FileInput
-                        name="img"
+                        name="imageUrl"
                         label="Choose Image"
                         handleInputState={handleInputState}
                         type="image"
-                        value={data.img}
+                        value={data.imageUrl}
 
                     />
 
+    
                     <button type="submit" className="songForm-submit_btn" >
                         Submit
                     </button>

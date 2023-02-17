@@ -14,11 +14,11 @@ export default function Login() {
   const dispatch = useDispatch();
 
   const userObj = {
-    name : "suresh",
+    name : "Suresh",
     roal : "admin"    
   }
   // const userObj = {
-  //   name : "suresh",
+  //   name : "Kumar",
   //   roal : "user"    
   // }
 

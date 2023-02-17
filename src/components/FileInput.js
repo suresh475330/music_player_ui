@@ -64,6 +64,7 @@ export default function FileInput({ name, label, value, type, handleInputState})
 				<audio
 					src={typeof value === "string" ? value : URL.createObjectURL(value)}
 					controls
+					className="fileInput-audio"
 				/>
 			)}
 			{value !== null && !progressShow && typeof value !== "string" && (

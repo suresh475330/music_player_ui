@@ -3,17 +3,19 @@ import './AdminDashboard.css';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 
 export default function AdminDashboard() {
 
+    const {user} = useSelector((state) => state.auth )
 
     return (
 
         <div className='admin-component'>
 
 
-            <h1 className='welcome-msg'>Welcome MR Suresh</h1>
+            <h1 className='welcome-msg'>Welcome MR {user?.name}</h1>
             <Box sx={{ flexGrow: 1 }}>
                 <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
                     <Grid item xs={2} sm={4} md={4} >

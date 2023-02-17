@@ -126,6 +126,7 @@ export default function Search() {
                 <InputBase
                     sx={{ ml: 1, flex: 1 }}
                     placeholder="Artists, songs, or albums"
+                    autoFocus={true}
                     inputProps={{ 'aria-label': 'Artists, songs, or albums' }}
                     onChange={handleChange}
                     value={searchInput}

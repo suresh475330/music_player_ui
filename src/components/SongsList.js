@@ -38,8 +38,14 @@ export default function SongsList() {
                                         sx={{ display: 'inline', color: "#B3B3B3", fontFamily: "Circular Std", fontWeight: 400, fontSize: { xs: "0.8em", sm: "1.3rem" } }}
                                         component="span"
                                         variant="body2">
-                                        This is the album
-                                    </Typography>
+                                        {'artist name'}
+                                    </Typography>                                   
+                                    <Typography
+                                        sx={{ marginLeft : "2rem",display: 'inline', color: "#B3B3B3", fontFamily: "Circular Std", fontWeight: 400, fontSize: { xs: "0.8em", sm: "1.3rem" } }}
+                                        component="span"
+                                        variant="body2">
+                                        {'album name'}
+                                    </Typography>                                   
                                 </React.Fragment>
                             } />
                         </div>

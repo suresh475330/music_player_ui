@@ -73,11 +73,10 @@ export default function SideBar() {
         subheader={
           <ListSubheader component="h4" sx={{ backgroundColor: "black", color: "#fff", fontSize: { xs: "1em", sm: "1.5rem" }, display: "flex", alignItems: "center" }} >
             <ListItemIcon>
-
               <img src={logo} alt='logo' width={30} />
             </ListItemIcon>
             <Typography >Play On</Typography>
-            <IconButton onClick={() => dispatch(setSideBarOpen())} sx={{ display: { xs: "block", sm: "none" }, ml: 2, ":hover": { backgroundColor: "#282828" } }}>
+            <IconButton onClick={() => dispatch(setSideBarOpen())} sx={{ display: { xs: "block", sm: "none" }, ml: 2, ":hover": { backgroundColor: "#282828" } ,alignItems :"center"}}>
               <CloseIcon sx={{ color: "#fff" }} />
             </IconButton>
 
