@@ -1,4 +1,5 @@
-import { getApp,getApps, initializeApp } from "firebase/app";
+import { initializeApp } from "firebase/app";
+import { getAuth, GoogleAuthProvider, signInWithRedirect } from "firebase/auth";
 import {getStorage} from 'firebase/storage';
 
 const firebaseConfig = {
@@ -10,7 +11,16 @@ const firebaseConfig = {
   appId: process.env.REACT_APP_FIREBASE_APP_ID
 };
 
-const app = getApps.length > 0 ? getApp() :  initializeApp(firebaseConfig);
+const app = initializeApp(firebaseConfig);
 const storage = getStorage(app,process.env.REACT_APP_FIREBASE_BUCKET_URL);
 
-export {app,storage};
+const provider = new GoogleAuthProvider();
+
+provider.setCustomParameters({
+  prompt : 'select_account',
+})
+
+const auth  = getAuth();
+const signInWithGoogleRedirect = () => signInWithRedirect(auth,provider);
+
+export {app,storage,auth,signInWithGoogleRedirect};

@@ -1,15 +1,19 @@
 import Main from "./pages/Main";
 import Login from "./pages/Login";
-import { useSelector } from "react-redux";
+import { Route, Routes } from "react-router-dom";
+import RequireAuth from "./components/RequireAuth";
 
 function App() {
 
-  const {user} = useSelector((state) => state.auth);
+  
 
   return (
-    < >
-        {user ? <Main /> : <Login />}
-    </>
+     <Routes>
+      <Route element={<RequireAuth />}>
+         <Route path="/*" element={<Main />} />
+       </Route>
+       <Route path="login" element={<Login />} /> 
+     </Routes>
   );
 }
 

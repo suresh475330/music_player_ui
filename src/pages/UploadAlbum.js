@@ -2,10 +2,26 @@ import "../components/SongForm.css";
 import { useState } from "react";
 import FileInput from "../components/FileInput";
 
+import { useDispatch, useSelector } from "react-redux";
+import { createAlbum } from "../features/adminSlice";
+
+function UploadMsg({ msg }) {
+    return (
+        <div style={{ paddingTop: "1rem" }}>
+            <h1 style={{ textAlign: "center", color: "#FFFFFF" }} >{msg}</h1>
+        </div>
+    )
+}
+
+
 export default function UploadAlbum() {
 
+    const dispatch = useDispatch();
+    const { albumMsg } = useSelector((state) => state.admin);
+
+
     const [data, setData] = useState({
-        title : "",
+        title: "",
         imageUrl: ""
     });
 
@@ -20,20 +36,22 @@ export default function UploadAlbum() {
     const handleSubmit = async (e) => {
         e.preventDefault()
         try {
-            // const url = process.env.REACT_APP_API_URL + "/songs"
-            // const { data: res } = await axios.post(url, data);
 
             if (data.img === '') {
                 return alert("Plz choose image");
             }
 
-            console.log(data)
+            dispatch(createAlbum(data));
+            console.log("createAlbum succes");
         } catch (error) {
             console.log(error)
         }
     };
     return (
         <div style={{ margin: "5rem 1rem 1rem" }}>
+
+            {albumMsg && <UploadMsg msg={albumMsg} />}
+
             <div className="songForm-container">
                 <form className="songForm-form" onSubmit={handleSubmit} >
 
@@ -58,7 +76,7 @@ export default function UploadAlbum() {
 
                     />
 
-    
+
                     <button type="submit" className="songForm-submit_btn" >
                         Submit
                     </button>

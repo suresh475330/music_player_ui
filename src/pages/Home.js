@@ -27,7 +27,6 @@ const Home = () => {
 
     const { user } = useSelector((state) => state.auth);
 
-
     const [timeOfDay, setTimeOfDay] = useState('morning');
     const [greet, setGreet] = useState("");
 
@@ -94,7 +93,7 @@ const Home = () => {
                 <Route path='/album/:id' element={<AlbumSongsList />} />
                 <Route path='/artist/:id' element={<ArtistSongsList />} />
 
-                {user?.roal === 'admin' && (
+                {user?.role === "admin" && (
                     <Route path='/adminDashboard' >
                         <Route index element={<AdminDashboard />} />
                         <Route path='users' element={<Users />} />
@@ -102,7 +101,7 @@ const Home = () => {
                         <Route path='uploadAlbum' element={<UploadAlbum />} />
                         <Route path='uploadSong' element={<UploadSong />} />
                     </Route>
-                )}
+                 )}
 
                 <Route path='*' element={<Navigate to="/" replace />} />
             </Routes>

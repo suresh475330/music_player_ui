@@ -1,44 +1,107 @@
 import "./Login.css"
 
 import Button from '@mui/material/Button';
-import { useDispatch } from "react-redux";
-import { logIn } from "../features/authSlice";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import googlePng from "../assets/google-logo 1.png"
-
 import logo from "../assets/musicLogo.png";
 
+import { signInWithGoogleRedirect, auth } from "../config/firebase-config";
+import { getRedirectResult } from "firebase/auth";
+import { vaildateUser } from '../features/authSlice'
+import { useEffect, useState } from "react";
+
+import CircularProgress from '@mui/material/CircularProgress';
+
+function LoadingLogin() {
+
+  return (
+    <div style={{ display: "flex", alignItems: "center", justifyContent: "center", height: "100vh" }}>
+      <CircularProgress sx={{ color: "#FFFFFF", width: "5rem" }} />
+    </div>
+  );
+}
+
+const LoginProcess = () => {
+
+  return (
+    <div className="showing-event">
+      <h1 style={{ textAlign: "center", color: "#FFFFFF" }} >Processing . . .</h1>
+    </div>
+  )
+}
+
+const ErrorDisplay = ({ errorMsg }) => {
+
+  return (
+    <div className="showing-event">
+      <h1 style={{ textAlign: "center", color: "#FFFFFF" }} >{errorMsg}</h1>
+    </div>
+  )
+}
+
+
 export default function Login() {
-  
+
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const { status, isAuth, error } = useSelector((state) => state.auth);
+  const [loginProcess, setLoginProcess] = useState(false)
 
-  const userObj = {
-    name : "Suresh",
-    roal : "admin"    
-  }
-  // const userObj = {
-  //   name : "Kumar",
-  //   roal : "user"    
-  // }
+  const loginWithGoogle = async () => {
+    console.log("signInWithGoogleRedirect working");
+    setLoginProcess(true);
+    await signInWithGoogleRedirect();
 
-  function goMain(user){
-    dispatch(logIn(user));
-    navigate("/");
   }
-  
+
+  useEffect(() => {
+    getRedirectResult(auth)
+      .then((result) => {
+        if (result) {
+          const token = result.user.accessToken;
+          // console.log(result.user);
+          dispatch(vaildateUser(token));
+        }
+      }).catch((error) => {
+        console.log(error);
+      });
+
+  }, [dispatch])
+
+
+  useEffect(() => {
+    if (isAuth === true) {
+      navigate("/");
+    }
+  }, [isAuth, navigate])
+
+
   return (
     <div className="loginContainer">
 
-        <div>
-        <img src={logo} alt="logo" width={150} />
-        <h3>Welcome to Play On <br /> music stremming application <br />
-        To play songs login with google account. </h3>
-        </div>
 
-      <Button onClick={() => goMain(userObj)} sx={{backgroundColor : "#0E0E0E",border : "1px solid #FFFFFF",borderRadius : "30px",":hover" : {backgroundColor : "#282828"}}} variant="contained" startIcon={<img src={googlePng} alt="logo"/>}>
-        Continue with Google
-      </Button>
+
+      {loginProcess && < LoginProcess />}
+      {status === "failed" && < ErrorDisplay errorMsg={error} />}
+
+      {status === "loading" ? (< LoadingLogin />) : (
+        <div className="loginContainer-items">
+
+          <div>
+            <img src={logo} alt="logo" width={150} />
+            <h3>Welcome to Play On <br /> music stremming application <br />
+              To play songs login with google account. </h3>
+          </div>
+
+          <Button onClick={loginWithGoogle} sx={{ backgroundColor: "#0E0E0E", border: "1px solid #FFFFFF", borderRadius: "30px", ":hover": { backgroundColor: "#282828" } }} variant="contained" startIcon={<img src={googlePng} alt="logo" />}>
+            Continue with Google
+          </Button>
+        </div>
+      )}
+
     </div>
   );
+
+
 }

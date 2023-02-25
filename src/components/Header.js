@@ -9,13 +9,14 @@ import Tooltip from '@mui/material/Tooltip';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import { useSelector, useDispatch } from 'react-redux';
-import { logOut } from '../features/authSlice';
 import { setSideBarOpen } from '../features/designSlice';
-
-import avatarImg from '../assets/historySong.jpeg';
+import { signOut, getAuth } from "firebase/auth";
+import { app } from '../config/firebase-config'
+import { logout } from '../features/authSlice';
 
 export default function Header() {
 
+    const firebaseAuth = getAuth(app);
     const { user } = useSelector((state) => state.auth);
     const dispatch = useDispatch();
 
@@ -28,12 +29,22 @@ export default function Header() {
         setAnchorEl(null);
     };
 
+    
+    const logOutWithGoogle = () => {
+        signOut(firebaseAuth).then(() => {
+            
+            dispatch(logout())
+            
+        }).catch((error) => {
+            console.log(error);
+        });
+    }
+    
     const logOutDispatch = () => {
         handleClose();
-        dispatch(logOut());
+        logOutWithGoogle();
     }
 
-    // 0E0E0E
     return (
         <Box sx={{ width: { xs: "100%", sm: "75%" } }} position="fixed">
             <AppBar sx={{ backgroundColor: "#0E0E0E" }} position="static">
@@ -57,7 +68,7 @@ export default function Header() {
                             onClick={handleClick}
                         >
                             <IconButton sx={{ p: 0 }}>
-                                <Avatar alt={user.name} sx={{ bgcolor: "#000000" }} src={avatarImg} />
+                                <Avatar  alt={user.name} sx={{ bgcolor: "#000000" }} src={user.imageURL} />
                             </IconButton>
                         </Tooltip>
                     )}

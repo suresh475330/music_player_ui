@@ -5,10 +5,9 @@ import Grid from '@mui/material/Grid';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
-
 export default function AdminDashboard() {
 
-    const {user} = useSelector((state) => state.auth )
+    const {user} = useSelector((state) => state.auth );
 
     return (
 

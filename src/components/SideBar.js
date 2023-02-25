@@ -111,7 +111,7 @@ export default function SideBar() {
           </ListItemButton>
         </Link>
 
-        {user?.roal === "admin" && (
+        {user?.role === "admin" && (
 
           <Link to="adminDashboard" style={{ textDecoration: "none", color: "white" }}>
             <ListItemButton onClick={closeTab} sx={{ ":hover": { backgroundColor: "#282828" } }}>

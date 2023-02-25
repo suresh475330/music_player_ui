@@ -1,33 +1,41 @@
 import "../components/SongForm.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import FileInput from "../components/FileInput";
+import { useSelector, useDispatch } from "react-redux";
+import { createSong, getAllAlbum, getAllArtist } from "../features/adminSlice";
 
-const artistData = [
-    {id : 1,name : "suresh"},
-    {id : 2,name : "kumar"},
-    {id : 3,name : "vignesh"},
-    {id : 4,name : "naveen"},
-    {id : 5,name : "aslam"},
-];
-const albumData = [
-    {id : 1,name : "AAA"},
-    {id : 2,name : "BBB"},
-    {id : 3,name : "CCC"},
-    {id : 4,name : "DDD"},
-    {id : 5,name : "EEE"},
-];
+function UploadMsg({ msg }) {
+    return (
+        <div style={{ paddingTop: "1rem" }}>
+            <h1 style={{ textAlign: "center", color: "#FFFFFF" }} >{msg}</h1>
+        </div>
+    )
+}
 
 export default function UploadSong() {
+    const dispatch = useDispatch();
+    const { artists, albums,songMsg } = useSelector((state) => state.admin);
 
     const [data, setData] = useState({
         title: "",
-        artist: "",
-        album: "",
-        language: "",
+        language: "Tamil",
+        artist: artists[0]?._id,
+        album: albums[0]?._id,
         imageUrl: "",
         songUrl: ""
     });
 
+    async function promiseFun() {
+        try {
+            await Promise.all([dispatch(getAllAlbum()), dispatch(getAllArtist())]);
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    useEffect(() => {
+        promiseFun();
+    }, [])
 
 
     const handleChange = ({ currentTarget: input }) => {
@@ -41,8 +49,6 @@ export default function UploadSong() {
     const handleSubmit = async (e) => {
         e.preventDefault()
         try {
-            // const url = process.env.REACT_APP_API_URL + "/songs"
-            // const { data: res } = await axios.post(url, data);
 
             if (data.imageUrl === '' || data.songUrl === '') {
                 return alert("Plz choose file");
@@ -53,13 +59,20 @@ export default function UploadSong() {
             }
 
 
-            console.log(data)
+            dispatch(createSong(data))
+            console.log("createSong succes");
         } catch (error) {
             console.log(error)
         }
+
     };
+
     return (
         <div style={{ margin: "5rem 1rem 1rem" }}>
+
+
+            {songMsg && <UploadMsg msg={songMsg} />}
+
             <div className="songForm-container">
                 <form className="songForm-form" onSubmit={handleSubmit} >
 
@@ -94,25 +107,25 @@ export default function UploadSong() {
                     />
 
                     <label htmlFor="artist">Choose a artist:</label>
-                    <select  className="songForm-input" required value={data.artist} onChange={handleChange} name="artist" id="artist">
-                      {artistData.map((item) => {
-                        return(
-                            <option key={item.id} value={item.name}>{item.name}</option>
-                        )
-                      })}
+                    <select className="songForm-input" required value={data.artist} onChange={handleChange} name="artist" id="artist">
+                        {artists?.map((item) => {
+                            return (
+                                <option key={item._id} value={item._id}>{item.name}</option>
+                            )
+                        })}
                     </select>
 
                     <label htmlFor="album">Choose a album:</label>
-                    <select  className="songForm-input" value={data.album} onChange={handleChange} name="album" id="album">
-                    {albumData.map((item) => {
-                        return(
-                            <option key={item.id} value={item.name}>{item.name}</option>
-                        )
-                      })}
+                    <select className="songForm-input" value={data.album} onChange={handleChange} name="album" id="album">
+                        {albums?.map((item) => {
+                            return (
+                                <option key={item._id} value={item._id}>{item.title}</option>
+                            )
+                        })}
                     </select>
 
-                    <label  htmlFor="language">Choose a language:</label>
-                    <select  className="songForm-input" required value={data.language} onChange={handleChange} name="language" id="language">
+                    <label htmlFor="language">Choose a language:</label>
+                    <select className="songForm-input" required value={data.language} onChange={handleChange} name="language" id="language">
                         <option value="Tamil">Tamil</option>
                         <option value="English">English</option>
                     </select>
