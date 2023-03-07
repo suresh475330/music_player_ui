@@ -3,7 +3,7 @@
 }
 
 .welcome-msg {
-    font-family: 'DM Sans';
+    font-family: 'DM Sans', sans-serif;
     font-style: normal;
     font-weight: 700;
     font-size: 38px;
@@ -20,7 +20,7 @@
 }
 
 .admin-card-title {
-    font-family: 'DM Sans';
+    font-family: 'DM Sans', sans-serif;
     font-style: normal;
     font-weight: 700;
     font-size: 25px;
@@ -50,6 +50,15 @@
 
 .song {
     background-color: #E8115B;
+}
+.artists {
+    background-color: #E8995B;
+}
+.albums {
+    background-color: #8D67DF;
+}
+.songs {
+    background-color: #97456A;
 }
 
 @media only screen and (max-width: 600px) {

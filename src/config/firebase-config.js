@@ -20,7 +20,7 @@ provider.setCustomParameters({
   prompt : 'select_account',
 })
 
-const auth  = getAuth();
+const auth  = getAuth(app);
 const signInWithGoogleRedirect = () => signInWithRedirect(auth,provider);
 
 export {app,storage,auth,signInWithGoogleRedirect};

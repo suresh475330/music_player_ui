@@ -2,7 +2,7 @@ import './Home.css';
 
 
 import Header from '../components/Header';
-import QuickHistory from '../components/QuickHistory';
+import QuickSongs from '../components/QuickSongs';
 import Footer from '../components/Footer';
 import AlbumsList from '../components/AlbumsList';
 import ArtistsList from '../components/ArtistsList';
@@ -18,20 +18,34 @@ import Users from './Users';
 import UploadSong from './UploadSong';
 import UploadArtist from './UploadArtist';
 import UploadAlbum from './UploadAlbum';
+import ManageArtists from './ManageArtists';
+import ManageAlbums from './ManageAlbums';
+import ManageSongs from './ManageSongs';
 
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector ,useDispatch} from 'react-redux';
+import {getRandomSongs,getRandomArtists,getRandomAlbums } from '../features/homeSlice';
 
 const Home = () => {
 
     const { user } = useSelector((state) => state.auth);
+    const dispatch = useDispatch();
 
     const [timeOfDay, setTimeOfDay] = useState('morning');
     const [greet, setGreet] = useState("");
 
+    async function getAllHomeData(){
+        try {
+            await Promise.all([dispatch(getRandomSongs()), dispatch(getRandomArtists()), dispatch(getRandomAlbums())]);
+        } catch (error) {
+            console.log(error);
+        }
+    }
 
     useEffect(() => {
+
+        getAllHomeData();
 
         const date = new Date();
         const hour = date.getHours();
@@ -68,8 +82,8 @@ const Home = () => {
 
                         <h4 className='userWish'>{greet}</h4>
 
-                        {/* This for latest 6 history songs */}
-                        <QuickHistory />
+                        {/* This for latest 6 history songs or random 6 songs */}
+                        <QuickSongs />
 
                         {/* This for albums list */}
                         <AlbumsList />
@@ -100,6 +114,9 @@ const Home = () => {
                         <Route path='uploadArtist' element={<UploadArtist />} />
                         <Route path='uploadAlbum' element={<UploadAlbum />} />
                         <Route path='uploadSong' element={<UploadSong />} />
+                        <Route path='manageArtists' element={<ManageArtists />} />
+                        <Route path='manageAlbums' element={<ManageAlbums />} />
+                        <Route path='manageSongs' element={<ManageSongs />} />
                     </Route>
                  )}
 

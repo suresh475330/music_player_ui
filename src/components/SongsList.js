@@ -1,14 +1,11 @@
 import * as React from 'react';
-import LikedPoster from '../assets/LikedPoster.png';
 import ListItemText from '@mui/material/ListItemText';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Typography from '@mui/material/Typography';
+import Box from '@mui/material/Box';
 
 
-
-export default function SongsList() {
-
-    const songs = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+export default function SongsList({ songsList}) {
 
     return (
 
@@ -16,39 +13,39 @@ export default function SongsList() {
 
             <div style={{ marginTop: "2rem", display: "inline-block" }}>
 
-                {songs.map((item) => {
+                {songsList?.map((item) => {
                     return (
 
-                        <div key={item} style={{ display: "flex", alignItems: "center", gap: "5px" }} >
-                            <ListItemAvatar sx={{ marginRight: "1rem" }}>
-                                <img src={LikedPoster} width={60} alt="song" />
+                        <Box key={item._id} sx={{ display: "flex", alignItems: "center", gap: "0.7rem",":hover" : {opacity : 0.5} }} >
+                            <ListItemAvatar sx={{ marginRight: "1rem" ,cursor : "pointer" , ":hover" : {opacity : 0.5} } }>
+                                <img src={item.imageUrl} style={{objectFit : "cover"}} width={60} height={60}  alt="songImg" />
                             </ListItemAvatar>
                             <ListItemText primary={
                                 <React.Fragment>
                                     <Typography
-                                        sx={{ display: 'inline', color: "#65D36E", fontFamily: "Circular Std", fontWeight: 450, fontSize: { xs: "1em", sm: "1.5rem" }, letterSpacing: "0.01em" }}
+                                        sx={{ display: 'inline', color: "#65D36E", fontFamily: 'DM Sans sans-serif', fontWeight: 450, fontSize: { xs: "1em", sm: "1.5rem" }, letterSpacing: "0.01em" }}
                                         component="span"
                                         variant="h6" >
-                                        This is a song name form unknow album
+                                        {item.title}
                                     </Typography>
                                 </React.Fragment>
                             } secondary={
                                 <React.Fragment>
                                     <Typography
-                                        sx={{ display: 'inline', color: "#B3B3B3", fontFamily: "Circular Std", fontWeight: 400, fontSize: { xs: "0.8em", sm: "1.3rem" } }}
+                                        sx={{ display: 'inline', color: "#B3B3B3", fontFamily: "DM Sans sans-serif", fontWeight: 400, fontSize: { xs: "0.8em", sm: "1.3rem" } }}
                                         component="span"
                                         variant="body2">
-                                        {'artist name'}
-                                    </Typography>                                   
+                                        {item.artist.name}
+                                    </Typography>
                                     <Typography
-                                        sx={{ marginLeft : "2rem",display: 'inline', color: "#B3B3B3", fontFamily: "Circular Std", fontWeight: 400, fontSize: { xs: "0.8em", sm: "1.3rem" } }}
+                                        sx={{ marginLeft: "2rem", display: 'inline', color: "#B3B3B3", fontFamily: "DM Sans sans-serif", fontWeight: 400, fontSize: { xs: "0.8em", sm: "1.3rem" } }}
                                         component="span"
                                         variant="body2">
-                                        {'album name'}
-                                    </Typography>                                   
+                                        {item.album?.title}
+                                    </Typography>
                                 </React.Fragment>
                             } />
-                        </div>
+                        </Box>
 
                     )
                 })}

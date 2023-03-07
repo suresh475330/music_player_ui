@@ -18,7 +18,7 @@
 }
 
 .history-banner-fileds h2 {
-    font-family: 'DM Sans';
+    font-family: 'DM Sans', sans-serif;
     font-style: normal;
     font-weight: 900;
     font-size: 5rem;
@@ -52,7 +52,7 @@
 }
 
 .liked-banner-fileds h2 {
-    font-family: 'DM Sans';
+    font-family: 'DM Sans', sans-serif;
     font-style: normal;
     font-weight: 900;
     font-size: 5rem;
@@ -83,11 +83,11 @@
 }
 
 .album-banner-fileds h2 {
-    font-family: 'DM Sans';
+    font-family: 'DM Sans', sans-serif;
     font-style: normal;
     font-weight: 900;
-    font-size: 5rem;
-    line-height: 0px;
+    font-size: 2.5rem;
+    /* line-height: 0px; */
     display: flex;
     align-items: center;
     letter-spacing: -0.06em;
@@ -115,11 +115,11 @@
 }
 
 .artist-banner-fileds h2 {
-    font-family: 'DM Sans';
+    font-family: 'DM Sans', sans-serif;
     font-style: normal;
     font-weight: 900;
-    font-size: 5rem;
-    line-height: 0px;
+    font-size: 2.5rem;
+    /* line-height: 3rem; */
     display: flex;
     align-items: center;
     letter-spacing: -0.06em;

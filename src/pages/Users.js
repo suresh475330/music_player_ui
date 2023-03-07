@@ -10,22 +10,21 @@ import { getAllusers } from '../features/adminSlice';
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Loading from '../components/Loading';
-import avatar from '../assets/avatar.jpg'
 
 
 const ErrorDisplay = ({ errorMsg }) => {
 
     return (
-      <div style={{paddingTop : "1rem"}}>
-        <h1 style={{ textAlign: "center", color: "#FFFFFF",fontSize : "1rem" }} >{errorMsg}</h1>
-      </div>
+        <div style={{ paddingTop: "1rem" }}>
+            <h1 style={{ textAlign: "center", color: "#FFFFFF", fontSize: "1rem" }} >{errorMsg}</h1>
+        </div>
     )
-  }
+}
+
 
 export default function Users() {
 
-    // const users = [1, 2, 3, 4, 5];
-    const { users,userStatus,userError } = useSelector((state) => state.admin);
+    const { users, userStatus, userError } = useSelector((state) => state.admin);
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -45,7 +44,7 @@ export default function Users() {
                 <>
                     <Typography
                         sx={{ marginBottom: "1rem", color: "#FFFFFF", letterSpacing: "-0.03em", fontFamily: "DM Sans", fontWeight: 700, fontSize: { xs: "20px", sm: "38px" }, textAlign: "center" }}>
-                        {users.length > 0 &&  `${users.length} Users use this application`} 
+                        {users.length > 0 && `${users.length} Users use this application`}
                     </Typography>
 
                     {/* data display */}
@@ -61,7 +60,7 @@ export default function Users() {
                                                 <CardMedia
                                                     component="img"
                                                     height="140"
-                                                    image={user.imageURL ? user.imageURL : avatar}
+                                                    image={user.imageURL}
                                                     alt={user.name}
                                                     sx={{ backgroundColor: "gray" }}
                                                 />

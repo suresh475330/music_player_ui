@@ -25,7 +25,7 @@ export const vaildateUser = createAsyncThunk("auth/vaildateUser", async (token, 
 
 
 
-export const todoSlice = createSlice({
+export const authSlice = createSlice({
   name: 'auth',
   initialState,
   reducers: {
@@ -56,7 +56,7 @@ export const todoSlice = createSlice({
 })
 
 // this is for dispatch
-export const { logout } = todoSlice.actions;
+export const { logout } = authSlice.actions;
 
 // this is for configureStore
-export default todoSlice.reducer;
+export default authSlice.reducer;

@@ -26,7 +26,7 @@ const LoginProcess = () => {
 
   return (
     <div className="showing-event">
-      <h1 style={{ textAlign: "center", color: "#FFFFFF" }} >Processing . . .</h1>
+      <h1 style={{ textAlign: "center", color: "#FFFFFF" }} >Processing...</h1>
     </div>
   )
 }
@@ -46,11 +46,12 @@ export default function Login() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { status, isAuth, error } = useSelector((state) => state.auth);
-  const [loginProcess, setLoginProcess] = useState(false)
+  const [loginProcess, setLoginProcess] = useState(false || window.localStorage.getItem("loginProcess"))
 
   const loginWithGoogle = async () => {
     console.log("signInWithGoogleRedirect working");
     setLoginProcess(true);
+    window.localStorage.setItem("loginProcess",true);
     await signInWithGoogleRedirect();
 
   }
@@ -72,9 +73,14 @@ export default function Login() {
 
   useEffect(() => {
     if (isAuth === true) {
+      window.localStorage.removeItem("loginProcess");
       navigate("/");
     }
-  }, [isAuth, navigate])
+
+    if(status === "loading" || status === "failed"){
+      setLoginProcess(false);
+    }
+  }, [status,isAuth, navigate])
 
 
   return (
@@ -83,7 +89,7 @@ export default function Login() {
 
 
       {loginProcess && < LoginProcess />}
-      {status === "failed" && < ErrorDisplay errorMsg={error} />}
+      {status === "failed"  && < ErrorDisplay errorMsg={error} />}
 
       {status === "loading" ? (< LoadingLogin />) : (
         <div className="loginContainer-items">

@@ -44,7 +44,7 @@
 
 .liked-head {
 
-    font-family: 'DM Sans';
+    font-family: 'DM Sans', sans-serif;
     font-style: normal;
     font-weight: 700;
     font-size: 40px;
@@ -57,7 +57,7 @@
 }
 
 .liked-tail {
-    font-family: 'DM Sans';
+    font-family: 'DM Sans', sans-serif;
     font-style: normal;
     font-weight: 450;
     font-size: 22px;
@@ -69,7 +69,7 @@
 }
 
 .history-head {
-    font-family: 'DM Sans';
+    font-family: 'DM Sans', sans-serif;
     font-style: normal;
     font-weight: 700;
     font-size: 40px;
@@ -82,7 +82,7 @@
 }
 
 .history-tail {
-    font-family: 'DM Sans';
+    font-family: 'DM Sans', sans-serif;
     font-style: normal;
     font-weight: 450;
     font-size: 22px;

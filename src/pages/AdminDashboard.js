@@ -47,6 +47,27 @@ export default function AdminDashboard() {
                             </div>
                         </Link>
                     </Grid>
+                    <Grid item xs={2} sm={4} md={4} >
+                        <Link to="./manageArtists" style={{ textDecoration: "none" }}>
+                            <div className='admin-card artists'>
+                                <h1 className='admin-card-title'>Manage Artists</h1>
+                            </div>
+                        </Link>
+                    </Grid>
+                    <Grid item xs={2} sm={4} md={4} >
+                        <Link to="./manageAlbums" style={{ textDecoration: "none" }}>
+                            <div className='admin-card albums'>
+                                <h1 className='admin-card-title'>Manage Albums</h1>
+                            </div>
+                        </Link>
+                    </Grid>
+                    <Grid item xs={2} sm={4} md={4} >
+                        <Link to="./manageSongs" style={{ textDecoration: "none" }}>
+                            <div className='admin-card songs'>
+                                <h1 className='admin-card-title'>Manage Songs</h1>
+                            </div>
+                        </Link>
+                    </Grid>
                 </Grid>
             </Box>
 
