@@ -24,20 +24,52 @@ import ManageSongs from './ManageSongs';
 
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { useSelector ,useDispatch} from 'react-redux';
-import {getRandomSongs,getRandomArtists,getRandomAlbums } from '../features/homeSlice';
+import { useSelector, useDispatch } from 'react-redux';
+import { getRandomSongs, getRandomArtists, getRandomAlbums } from '../features/homeSlice';
+import { resetAddFavourite ,resetRemoveFavourite,getAllLikedSongsId} from '../features/playerSlice';
+
+import Alert from '@mui/material/Alert';
+import Stack from '@mui/material/Stack';
+
+
+function AlertMsg({ msg ,status , liked}) {
+
+    const dispatch = useDispatch();
+
+    if(status === "succeeded"){
+
+        return (
+            <Stack sx={{ width: '100%' }} spacing={2}>
+                <Alert icon={false}  severity="success" onClose={() => { liked === "adding" ?  dispatch(resetAddFavourite()) :   dispatch(resetRemoveFavourite())  }}>{msg}</Alert>
+            </Stack>
+        )
+    }else if(status === "failed") {
+
+        return (
+            <Stack sx={{ width: '100%' }} spacing={2}>
+                <Alert icon={false} severity="error" onClose={() => { liked === "adding" ?  dispatch(resetAddFavourite()) :   dispatch(resetRemoveFavourite())  }}>{msg}</Alert>
+            </Stack>
+        )
+    }
+
+}
 
 const Home = () => {
 
     const { user } = useSelector((state) => state.auth);
+    const { songsPlayList, addFavouriteSongStatus,
+     addFavouriteSongMsg,removeFavouriteSongStatus,
+     removeFavouriteSongMsg } = useSelector((state) => state.player);
+
+
     const dispatch = useDispatch();
 
     const [timeOfDay, setTimeOfDay] = useState('morning');
     const [greet, setGreet] = useState("");
 
-    async function getAllHomeData(){
+    async function getAllHomeData() {
         try {
-            await Promise.all([dispatch(getRandomSongs()), dispatch(getRandomArtists()), dispatch(getRandomAlbums())]);
+            await Promise.all([dispatch(getRandomSongs()), dispatch(getRandomArtists()), dispatch(getRandomAlbums()) , dispatch(getAllLikedSongsId(user._id))]);
         } catch (error) {
             console.log(error);
         }
@@ -80,6 +112,11 @@ const Home = () => {
 
                     <div className='home-components'>
 
+                        {addFavouriteSongStatus === "succeeded" && <AlertMsg msg={addFavouriteSongMsg} status={addFavouriteSongStatus} liked={"adding"}/>}
+                        {addFavouriteSongStatus === "failed" && <AlertMsg msg={addFavouriteSongMsg} status={addFavouriteSongStatus} liked={"adding"}/>}
+                        {removeFavouriteSongStatus === "succeeded" && <AlertMsg msg={removeFavouriteSongMsg} status={removeFavouriteSongStatus} liked={"removing"}/>}
+                        {removeFavouriteSongStatus === "failed" && <AlertMsg msg={removeFavouriteSongMsg} status={removeFavouriteSongStatus} liked={"removing"}/>}
+
                         <h4 className='userWish'>{greet}</h4>
 
                         {/* This for latest 6 history songs or random 6 songs */}
@@ -89,7 +126,7 @@ const Home = () => {
                         <AlbumsList />
 
                         {/* This for artist list  */}
-                        <ArtistsList  />
+                        <ArtistsList />
 
 
                     </div>
@@ -118,15 +155,18 @@ const Home = () => {
                         <Route path='manageAlbums' element={<ManageAlbums />} />
                         <Route path='manageSongs' element={<ManageSongs />} />
                     </Route>
-                 )}
+                )}
 
                 <Route path='*' element={<Navigate to="/" replace />} />
             </Routes>
 
-            <div className='gap' />
+            {songsPlayList.length > 0 &&
+                <div>
+                    <div className='gap' />
+                    <Footer />
+                </div>
+            }
 
-
-            <Footer />
         </section >
     )
 }

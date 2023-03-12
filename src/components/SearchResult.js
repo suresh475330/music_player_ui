@@ -1,10 +1,10 @@
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
-import { useSelector } from 'react-redux'
+import { useSelector ,useDispatch} from 'react-redux'
 import Loading from '../components/Loading';
 import {Link} from 'react-router-dom'
-
+import { pushSong } from '../features/playerSlice';
 
 function SearchMsg({ msg }) {
     return (
@@ -18,7 +18,7 @@ export default function SearchResult({ displayItem }) {
 
 
     const { searchStatus, searchError, searchResult } = useSelector((state) => state.search);
-
+    const dispatch = useDispatch();
 
     if (searchStatus === 'loading') return <Loading />
     if (searchStatus === 'failed') return <SearchMsg msg={searchError} />
@@ -32,7 +32,7 @@ export default function SearchResult({ displayItem }) {
                         searchResult.songs.map((item) => {
                             return (
 
-                                <Grid item xs={2} sm={4} md={4} key={item._id}>
+                                <Grid item xs={2} sm={4} md={4} key={item._id} onClick={() => dispatch(pushSong(item))}>
                                     <img src={item.imageUrl} width={150} alt={item.title} style={{ borderRadius: "5px" }} />
                                     <Typography sx={{ color: "#FFFFFF", fontWeight: 700, fontSize: "16px", fontFamily: "DM Sans", lineHeight: "19px", marginTop: "10px" }}>{item.title}</Typography>
                                     <Typography sx={{ color: "#A7A7A7", fontWeight: 400, fontSize: "16px", fontFamily: "DM Sans", lineHeight: "19px" }}>{item.artist.name}</Typography>

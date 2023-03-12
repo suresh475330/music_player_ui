@@ -43,7 +43,7 @@
     font-family: 'DM Sans', sans-serif;
     font-style: normal;
     font-weight: 600;
-    font-size: 1rem;
+    font-size: 0.8rem;
     letter-spacing: -0.03em;
     color: #FFFFFF;
 
@@ -59,7 +59,7 @@
     font-family: 'DM Sans', sans-serif;
     font-style: normal;
     font-weight: 700;
-    font-size: 0.8rem;
+    font-size: 0.7rem;
     letter-spacing: -0.03em;
 
     color: #B3B3B3;
@@ -71,26 +71,39 @@
 }
 
 @media only screen and (max-width: 600px) {
-    .footer-container{
+    .footer-container {
         height: 90px;
     }
-    .itmes{
+
+    .itmes {
         display: flex;
         align-items: center;
         justify-content: flex-start;
     }
-    .info{
+
+    .info {
         display: flex;
         width: 100px;
         gap: 10px;
         margin: 0px;
     }
-    .poster{
+
+    .poster {
         width: 50px;
         height: 50px;
         margin-left: 10px;
     }
-    .info-text{
+
+    .info-text {
         display: none;
     }
+
+    .rhap_forward-button {
+        display: none;
+    }
+
+    .rhap_rewind-button {
+        display: none;
+    }
+
 }

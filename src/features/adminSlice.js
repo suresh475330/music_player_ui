@@ -144,7 +144,7 @@ export const adminSlice = createSlice({
         state.artistMsg = action.payload
       })
       .addCase(createArtist.rejected, (state, action) => {
-        state.artistMsg = action.payload
+        state.artistMsg = action.error.message
       })
       .addCase(createAlbum.pending, (state, action) => {
         state.albumMsg  = "Processing..."
@@ -153,7 +153,7 @@ export const adminSlice = createSlice({
         state.albumMsg = action.payload
       })
       .addCase(createAlbum.rejected, (state, action) => {
-        state.albumMsg = action.payload
+        state.albumMsg = action.error.message
       })
       .addCase(createSong.pending, (state, action) => {
         state.songMsg  = "Processing..."
@@ -162,7 +162,7 @@ export const adminSlice = createSlice({
         state.songMsg = action.payload
       })
       .addCase(createSong.rejected, (state, action) => {
-        state.songMsg = action.payload
+        state.songMsg = action.error.message
       })
       .addCase(deleteArtist.pending, (state, action) => {
         state.deleteArtistMsg  = "Processing..."
@@ -171,7 +171,7 @@ export const adminSlice = createSlice({
         state.deleteArtistMsg = action.payload
       })
       .addCase(deleteArtist.rejected, (state, action) => {
-        state.deleteArtistMsg = action.payload
+        state.deleteArtistMsg = action.error.message
       })
       .addCase(deleteAlbum.pending, (state, action) => {
         state.deleteAlbumMsg  = "Processing..."
@@ -180,7 +180,7 @@ export const adminSlice = createSlice({
         state.deleteAlbumMsg = action.payload
       })
       .addCase(deleteAlbum.rejected, (state, action) => {
-        state.deleteAlbumMsg = action.payload
+        state.deleteAlbumMsg = action.error.message
       })
       .addCase(deleteSong.pending, (state, action) => {
         state.deleteSongtMsg  = "Processing..."
@@ -189,7 +189,7 @@ export const adminSlice = createSlice({
         state.deleteSongtMsg = action.payload
       })
       .addCase(deleteSong.rejected, (state, action) => {
-        state.deleteSongtMsg = action.payload
+        state.deleteSongtMsg = action.error.message
       })
   },
 })

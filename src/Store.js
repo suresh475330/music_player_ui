@@ -4,6 +4,7 @@ import designSlice from './features/designSlice';
 import adminSlice from './features/adminSlice';
 import searchSlice from './features/searchSlice';
 import homeSlice from './features/homeSlice';
+import playerSlice from './features/playerSlice';
 
 export default configureStore({
   reducer: {
@@ -11,6 +12,7 @@ export default configureStore({
     design : designSlice,
     admin : adminSlice,
     search : searchSlice,
-    home : homeSlice
+    home : homeSlice,
+    player : playerSlice
   },
 });

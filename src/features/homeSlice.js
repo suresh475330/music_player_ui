@@ -25,8 +25,6 @@ const initialState = {
     artistSongsError: null,   
 }
 
-// {{URL}}/api/v1/song?albumId=63f9cd4c8b506bfed775ea45
-
 
 export const getRandomSongs = createAsyncThunk("home/getRandomSongs", async (searchText) => {
     const res = await axios.get(`${baseUrl}api/v1/song/random?length=6`);

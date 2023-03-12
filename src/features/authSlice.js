@@ -32,6 +32,7 @@ export const authSlice = createSlice({
     logout: (state, action) => {
       window.localStorage.removeItem("user");
       window.localStorage.removeItem("isAuth");
+      window.localStorage.removeItem("likedSongs");
       state.user = null;
       state.isAuth = false;
     }

@@ -5,15 +5,15 @@ import RequireAuth from "./components/RequireAuth";
 
 function App() {
 
-  
+
 
   return (
-     <Routes>
+    <Routes>
       <Route element={<RequireAuth />}>
-         <Route path="/*" element={<Main />} />
-       </Route>
-       <Route path="login" element={<Login />} /> 
-     </Routes>
+        <Route path="/*" element={<Main />} />
+      </Route>
+      <Route path="login" element={<Login />} />
+    </Routes>
   );
 }
 

@@ -6,7 +6,8 @@ import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
 import Skeleton from '@mui/material/Skeleton';
-import { useSelector } from 'react-redux';
+import { useSelector ,useDispatch} from 'react-redux';
+import { pushSong } from '../features/playerSlice';
 
 const Item = styled(Paper)(() => ({
     backgroundColor: "#303030",
@@ -37,6 +38,7 @@ function QuickErrorMsg({ msg }) {
 export default function QuickSongs() {
 
     const {randomSongs,randomSongsStatus,randomSongsError } = useSelector((state) => state.home );
+    const dispatch = useDispatch();
 
 
     if(randomSongsStatus === "failed") return <QuickErrorMsg msg={randomSongsError} />
@@ -47,7 +49,7 @@ export default function QuickSongs() {
                 {randomSongsStatus === "loading" ? (<QuickSongListLoding />) : (
                     randomSongs?.map((item) => (
                         <Grid item xs={2} sm={4} md={4} key={item._id}>
-                            <Item className='container' >
+                            <Item className='container' onClick={() => dispatch(pushSong(item))} >
                                 <img src={item.imageUrl} alt="songImg" />
                                 <p >{item.title}</p>
                             </Item>

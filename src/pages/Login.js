@@ -51,8 +51,12 @@ export default function Login() {
   const loginWithGoogle = async () => {
     console.log("signInWithGoogleRedirect working");
     setLoginProcess(true);
-    window.localStorage.setItem("loginProcess",true);
-    await signInWithGoogleRedirect();
+    window.localStorage.setItem("loginProcess", true);
+    try {
+      await signInWithGoogleRedirect();
+    } catch (error) {
+      console.log(error);
+    }
 
   }
 
@@ -77,10 +81,10 @@ export default function Login() {
       navigate("/");
     }
 
-    if(status === "loading" || status === "failed"){
+    if (status === "loading" || status === "failed") {
       setLoginProcess(false);
     }
-  }, [status,isAuth, navigate])
+  }, [status, isAuth, navigate])
 
 
   return (
@@ -89,7 +93,7 @@ export default function Login() {
 
 
       {loginProcess && < LoginProcess />}
-      {status === "failed"  && < ErrorDisplay errorMsg={error} />}
+      {status === "failed" && < ErrorDisplay errorMsg={error} />}
 
       {status === "loading" ? (< LoadingLogin />) : (
         <div className="loginContainer-items">
@@ -100,9 +104,11 @@ export default function Login() {
               To play songs login with google account. </h3>
           </div>
 
-          <Button onClick={loginWithGoogle} sx={{ backgroundColor: "#0E0E0E", border: "1px solid #FFFFFF", borderRadius: "30px", ":hover": { backgroundColor: "#282828" } }} variant="contained" startIcon={<img src={googlePng} alt="logo" />}>
-            Continue with Google
-          </Button>
+          {!loginProcess &&
+            <Button onClick={loginWithGoogle} sx={{ backgroundColor: "#0E0E0E", border: "1px solid #FFFFFF", borderRadius: "30px", ":hover": { backgroundColor: "#282828" } }} variant="contained" startIcon={<img src={googlePng} alt="logo" />}>
+              Continue with Google
+            </Button>
+          }
         </div>
       )}
 

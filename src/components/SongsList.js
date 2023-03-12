@@ -3,10 +3,12 @@ import ListItemText from '@mui/material/ListItemText';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
-
+import { pushSong } from '../features/playerSlice';
+import { useDispatch} from 'react-redux';
 
 export default function SongsList({ songsList}) {
 
+    const dispatch = useDispatch();
     return (
 
         <>
@@ -16,7 +18,7 @@ export default function SongsList({ songsList}) {
                 {songsList?.map((item) => {
                     return (
 
-                        <Box key={item._id} sx={{ display: "flex", alignItems: "center", gap: "0.7rem",":hover" : {opacity : 0.5} }} >
+                        <Box key={item._id} onClick={() => dispatch(pushSong(item))} sx={{ display: "flex", alignItems: "center", gap: "0.7rem",":hover" : {opacity : 0.5} }} >
                             <ListItemAvatar sx={{ marginRight: "1rem" ,cursor : "pointer" , ":hover" : {opacity : 0.5} } }>
                                 <img src={item.imageUrl} style={{objectFit : "cover"}} width={60} height={60}  alt="songImg" />
                             </ListItemAvatar>
